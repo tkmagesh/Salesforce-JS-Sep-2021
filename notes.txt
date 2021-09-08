@@ -66,3 +66,18 @@ Two implicit values available in a function
             etc
     - this
 
+    It DOES NOT matter where the function is OR who owns the function
+    What matters is the HOW the function is invoked
+
+    Function Invocation Patterns 
+        1. When a function is invoked as a method of an object (obj)
+                this => obj
+        2. When invoked as a function
+                this => global scope (window in the browser)
+
+        3. Using the 'call' method of the function
+
+        4. Using the 'apply' method of the function
+
+        
+        
