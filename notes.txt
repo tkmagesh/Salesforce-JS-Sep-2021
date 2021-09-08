@@ -55,3 +55,14 @@ sum([10,[20,30]],["abc",50]) //=> 100
 sum(function(){ return 10;}, function(){ return 20;}) // => 30
 sum(function(){ return [10,[20,30]];},function(){ return ["abc",50]; } ) //=> 100
 sum([function(){ return [10,[20,30]];},function(){ return ["abc",50]; } ]) //=> 100
+
+
+Two implicit values available in a function
+    - arguments
+        array like object populated with all the argument values passed to the function
+            arguments.length
+            arguments[0]
+            arguments[1]
+            etc
+    - this
+
