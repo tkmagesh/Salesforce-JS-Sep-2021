@@ -112,3 +112,21 @@ Two implicit values available in a function
 Pure Functions
     Functions with no side effects
     The invocation of the function can be replaced with the result of the function without affecting final outcome.
+
+    Examples of Non-pure function
+
+        /* ****************
+            function add(x,y){
+                console.log('processing ', x , ' and ', y); //=> side effect
+                return x + y;
+            }
+
+        ***************** */
+
+         /* ****************
+            var z = 100
+            function add(x,y){
+                return x + y + z;
+            }
+
+        ***************** */
