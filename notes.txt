@@ -130,3 +130,16 @@ Pure Functions
             }
 
         ***************** */
+
+
+Day-01 Assignment
+//Assignment
+//Generalize the memoize function so that it can memoize 
+//functions that take more than one argument.
+
+//The following should work
+/* 
+var add = memoize(function(x,y){
+    return x + y;
+}) 
+*/

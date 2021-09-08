@@ -60,3 +60,14 @@ var isPrime = memoize(function(n){
         return true;
     }
 })
+
+//Assignment
+//Generalize the memoize function so that it can memoize 
+//functions that take more than one argument.
+
+//The following should work
+/* 
+var add = memoize(function(x,y){
+    return x + y;
+}) 
+*/
