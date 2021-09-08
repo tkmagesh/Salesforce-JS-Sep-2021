@@ -1,0 +1,57 @@
+Schedule :
+    Commence    : t:00 hours
+    Tea break   : t:00 + 1:30 hours (15 mins)
+    Lunch break : t:00 + 3:30 hours (1 hour)
+    Tea break   : t:00 + 6:00 hours (15 mins)
+    End         : t:00 + 7:30 hours
+
+
+About You:
+    Total Experience
+    Primary skillset
+    Experience in JavaScript
+
+Why JS?
+
+1. Data Types
+    number, string, boolean, object, function, undefined
+
+2. Programming constructs
+    var, if else, switch case, while, for, try catch finally, throw, function
+
+3. APIs
+    Date, Math, Array, RegEx, Object, Error, setTimeout, clearTimeout, setInterval, clearInterval
+
+ES6 / ECMAScript 6 (2015)
+
+Loosely Typed
+Dynamic
+Functional 
+    functions are first class citizens
+        functions can be treated data (object)
+            assign functions to variables
+            pass functions as arguments
+            return functions as return values from functions
+    functions are called as callable objects
+    functions are variadic by default
+
+
+$(domNode)
+$([domNode, domNode, domNode])
+$('#logo-events')
+$(jQueryObj)
+$(fn)
+
+sum() //=> 0
+sum(10) //=> 10
+sum(10,20) //=> 30
+sum(10,20,30,40,50) //=> 150
+sum(10,20,30,"40",50) //=> 150
+sum(10,20,30,"abc",50) //=> 100
+sum([10,20,30],[40,50]) //=> 150
+sum([10,20,30],["40",50]) //=> 150
+sum([10,20,30],["abc",50]) //=> 100
+sum([10,[20,30]],["abc",50]) //=> 100
+sum(function(){ return 10;}, function(){ return 20;}) // => 30
+sum(function(){ return [10,[20,30]];},function(){ return ["abc",50]; } ) //=> 100
+sum([function(){ return [10,[20,30]];},function(){ return ["abc",50]; } ]) //=> 100
