@@ -79,5 +79,7 @@ Two implicit values available in a function
 
         4. Using the 'apply' method of the function
 
+        5. As an Immediately Invoked Function Expression (IIFE)
+
         
         
