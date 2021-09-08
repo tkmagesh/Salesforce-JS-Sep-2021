@@ -83,3 +83,32 @@ Two implicit values available in a function
 
         
         
+    Create an object and assign it to a variable called 'spinner'
+    The object must have two methods (increment, decrement)
+
+    var spinner = /*.....*/
+    spinner.increment() //=> 1
+    spinner.increment() //=> 2
+    spinner.increment() //=> 3
+    spinner.increment() //=> 4
+
+    spinner.decrement() //=> 3
+    spinner.decrement() //=> 2
+    spinner.decrement() //=> 1
+    spinner.decrement() //=> 0
+    spinner.decrement() //=> -1
+
+    IMPORTANT: The outcome of 'increment' & 'decrement' methods SHOULD NOT be able to be influenced from outside the object
+
+    The following SHOULD NOT be possible
+    spinner.counter = 10000
+    spinner.increment() // SHOULD not return 10001
+
+    OR
+
+    counter = 10000
+    spinner.increment() // SHOULD not return 10001
+
+Pure Functions
+    Functions with no side effects
+    The invocation of the function can be replaced with the result of the function without affecting final outcome.
