@@ -210,3 +210,10 @@ class FulltimeEmployee extends Employee{
         this.benefits = benefits;
     }
 }
+
+/* 
+
+//Reference
+http://es6-features.org
+
+ */
