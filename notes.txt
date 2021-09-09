@@ -147,3 +147,40 @@ var add = memoize(function(x,y){
     return x + y;
 }) 
 */
+
+
+Inheritance
+Prototypal Inheritance
+    One object (prototype) acts as the base object for a familiy of objects (created using the same constructor function)
+
+    Prototype hopping
+        the process by which an attribute is resolved by tracing the __proto__ chain
+    
+    Resolving an attribute by prototype hopping happens ONLY when READING an attribute
+
+    DO NOT use __proto__ in your code (because it is an implementation detail subject to change in future)
+        1. If __proto__ is not to be used, how will I access the base object?
+            Using the corresponding ConstructorFunction.prototype
+
+        2. If __proto__ is not to be used, then why is __proto__ accessible?
+            Becoz, Hiding is costly in JavaScript
+
+
+1. Create an alternative for JavaScript
+    Dart (google)
+
+2. Languages that compile to JavaScript
+    New Languages
+        CoffeeScript
+        TypeScript (make javascript typesafe)
+
+    Compiler for existing languages
+        Script# (C# -> JS)
+        Clojure (Java -> JS)
+
+3. ES6 (ECMAScript6 / ES2015 / ESNext)
+    
+
+
+
+
