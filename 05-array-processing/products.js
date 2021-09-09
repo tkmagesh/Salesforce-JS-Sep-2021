@@ -57,5 +57,9 @@ var sum = nos.reduce((x,y) => {
 
 /* 
 group the products by their category
-
 */
+var productByCategory = products.reduce((result, product) => {
+    result[product.category] = result[product.category] || []
+    result[product.category].push(product)
+    return result;
+},{})
