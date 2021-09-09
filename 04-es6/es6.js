@@ -130,3 +130,28 @@ var fibonacci = {
 var fibIter = fibonacci[Symbol.iterator]()
 fibIter.next()
 fibIter.next()
+
+//15. generator functions
+//functions whose execution can be suspended and resumed
+
+function *genEvenNos(){
+    yield 2;
+    yield 4;
+    yield 6;
+    yield 8;
+    yield 10;
+    return;
+}
+
+var evenNos = genEvenNos()
+evenNos.next()
+
+function *fibonacci(){
+    var pre = 0, cur = 1
+    while(true){
+       yield cur
+       var temp = pre
+       pre = cur
+       cur += temp
+   }
+}
