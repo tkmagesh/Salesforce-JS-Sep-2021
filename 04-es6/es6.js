@@ -61,3 +61,5 @@ var { id :x, org : { name, city} } = emp
 //09. Object construction enhancement
 var id = 101, name = 'Pen', cost = 10
 var product = { id , name , cost  }
+
+//10. function arguments enhancements
