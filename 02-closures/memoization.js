@@ -87,3 +87,7 @@ var add = memoize(function(x,y){
     console.log('processing ', arguments);
     return x + y;
 }) 
+
+var add2 = memoize(function(x,y,z){
+    return x + y + z;
+});
