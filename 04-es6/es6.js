@@ -182,3 +182,31 @@ var Spinner = (function () {
 
     return Spinner;
 })();
+
+//16.Classes
+
+class Employee{
+    id = 0;
+    name = ''
+    salary = 0;
+
+    constructor(id, name, salary){
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    display(){
+        console.log(`id = ${this.id}, name = ${this.name}, salary = ${this.salary}`)
+    }
+}
+
+//17. class inheritance
+
+class FulltimeEmployee extends Employee{
+    benefits = ''
+    constructor(id, name, salary, benefits){
+        super(id, name, salary)
+        this.benefits = benefits;
+    }
+}
