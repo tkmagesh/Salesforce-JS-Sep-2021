@@ -63,3 +63,70 @@ var id = 101, name = 'Pen', cost = 10
 var product = { id , name , cost  }
 
 //10. function arguments enhancements
+
+//11. default arguments
+function add(x = 10,y = 20){
+    return x + y;
+}
+
+//12. Arrow functions
+/*
+//function statement
+function add(x,y){
+    return x + y;
+}
+
+//function expression
+var add = function(x,y){
+    return x + y;
+}
+
+//arrow function
+var add = (x,y) => {
+    return x + y;
+}
+*/
+
+var add = (x,y) => x + y;
+
+//13. Template strings
+var x = 10, y = 20
+var s2 = `Sum of ${x} and ${y} is ${x+y}`
+
+var s3 = `Sum of
+    ${x} and ${y} 
+    is ${x+y}`
+
+//14. iterators
+
+var nos = [10,20,30,40]
+
+for(let no of nos)
+    console.log(no)
+
+//OR
+var iter = nos[Symbol.iterator]()
+iter.next()
+iter.next()
+
+//custom iterators
+var fibonacci = {
+    [Symbol.iterator] : function(){
+        var pre = 0, cur = 1
+        return {
+            next : function(){
+                var temp = pre
+                pre = cur
+                cur += temp
+                return {
+                    value : temp,
+                    done : false
+                }
+            }
+        }
+    }
+}
+
+var fibIter = fibonacci[Symbol.iterator]()
+fibIter.next()
+fibIter.next()
