@@ -26,3 +26,21 @@ Spinner.prototype.increment = function () {
 Spinner.prototype.decrement = function() {
     return --this.__counter__;
 };
+
+var Spinner = (function () {
+    var counterSymbol = Symbol('counter')
+
+    function Spinner() {
+        this[counterSymbol] = 0;
+    }
+
+    Spinner.prototype.increment = function () {
+        return ++this[counterSymbol];
+    };
+
+    Spinner.prototype.decrement = function() {
+        return --this[counterSymbol];
+    };
+
+    return Spinner;
+})();
