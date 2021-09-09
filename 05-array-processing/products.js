@@ -35,7 +35,14 @@ for(var product of products){
 }
 
 //declarative
-var stationaryProducts = products.filter(product => product.category === 'stationary')
+function negate(predicate){
+    return function(...args){
+        return !predicate(...args)
+    }
+}
+var stationaryProductPredicate = product => product.category === 'stationary';
+var stationaryProducts = products.filter(stationaryProductPredicate);
+var nonStationaryProducts = products.filter(negate(stationaryProductPredicate));
 
 //map
 //transform one list of values into another list of values
@@ -63,3 +70,11 @@ var productByCategory = products.reduce((result, product) => {
     result[product.category].push(product)
     return result;
 },{})
+
+function after(count, fn){
+    return function(...args){
+        if (--count <=0 ){
+            return fn(...args);
+        }
+    }
+}
