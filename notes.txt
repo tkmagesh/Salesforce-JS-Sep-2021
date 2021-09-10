@@ -188,3 +188,25 @@ Async Operation
 promise libraries
 q.js
 bluebird.js
+
+
+json-server
+    node module that can expose the data in a json file as restful endpoints
+
+Using fetch for ajax
+    GET requests
+
+        fetch('http://localhost:3000/bugs')
+            .then(response => response.json())
+            .then(bugs => console.table(bugs))
+
+    POST request
+        fetch('http://localhost:3000/bugs', {
+            method : 'POST',
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            body : JSON.stringify(newBugData)
+        })
+        .then(response => response.json())
+        .then(newBug => console.log('new bug created ', newBug))
