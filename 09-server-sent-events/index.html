@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Sent Events</title>
+    <script>
+        (() => {
+            var esConnection = null;
+            function onServerMessage(evt){
+                document.getElementById('divMessages').innerHTML += evt.data + '<br/>';
+            }
+            function onBtnReceiveMessagesClick(){
+                esConnection = new EventSource('/stream');
+                esConnection.addEventListener('message', onServerMessage);
+            }
+            function onDocumentLoad(){
+                var btnReceiveMessages = document.getElementById("btnReceiveMessages");
+                btnReceiveMessages.addEventListener("click", onBtnReceiveMessagesClick);
+            }
+            window.addEventListener('load', onDocumentLoad);
+        })();
+
+    </script>
+</head>
+<body>
+    <h1>Server Sent Events</h1>
+    <hr>
+    <input type="button" value="Receive Messages" id="btnReceiveMessages">
+    <div id="divMessages"></div>
+</body>
+</html>
