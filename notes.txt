@@ -210,3 +210,74 @@ Using fetch for ajax
         })
         .then(response => response.json())
         .then(newBug => console.log('new bug created ', newBug))
+
+    PUT request
+    var updatedBug = {
+        id : 6,
+        name : 'Fetch is not fetching always',
+        isClosed : true,
+        createdAt : new Date()
+    }
+
+    fetch('http://localhost:3000/bugs/6', {
+        method : 'PUT',
+        headers : {
+            'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify(updatedBug)
+    })
+    .then(response => response.json())
+    .then(updatedBug => console.log('updated bug ', updatedBug))
+
+    DELETE request
+    fetch('http://localhost:3000/bugs/5', {
+        method : 'DELETE',
+        headers : {
+            'Content-Type' : 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(updatedBug => console.log('bug deleted'))
+
+
+axios is an alternative for fetch
+    GET requests
+        axios.get('http://localhost:3000/bugs')
+            .then(bugs => console.table(bugs))
+
+
+Browser as a Virtual OS
+    Data Storage
+        Local Storage
+            window.localStorage (object)
+            ====================
+                - key/value store
+                - both key & value must be strings
+                - can store up to 10MB of data
+                - key has to be unique
+                - Same origin policy
+                - APIs
+                ------
+                    * setItem(key, value)
+                    * getItem(key) //=> value
+                    * removeItem(key)
+                    * key(index) //=> key at index
+                    * clear()
+                    * length //=> number of items
+
+
+        Session Storage
+            window.sessionStorage (object)
+            apis are same as local storage
+            data is cleared when the browser tab is closed
+
+
+        IndexedDB
+
+    Multithreading
+        Web Workers
+
+    Realtime updates
+        Server Sent Events
+        Web Sockets
+

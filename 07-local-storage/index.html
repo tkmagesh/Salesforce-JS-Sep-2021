@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Tracker</title>
+    <script src="jquery-3.6.0.js"></script>
+    <style>
+        body{
+            margin-left: 50px;
+        }
+        section{
+            margin-bottom: 10px;
+        }
+        ol{
+            list-style:none;
+            width : 500px;
+            -webkit-padding-start : 0px;
+        }
+        .bugname{
+            font-size: 18pt;
+        }
+        .closed{
+            text-decoration: line-through;
+            font-style: italic;
+            font-weight: bold;
+            color : red;
+        }
+        li{
+            padding : 10px;
+            margin-bottom: 10px;
+            border : 1px solid gray;
+            border-radius : 5px;
+            background-color: #e7e7e7;
+        }
+
+    </style>
+    <script>
+        (() => {
+            let currentBugId = 0;
+            let storage = window.localStorage;
+            let bugs = [];
+
+            function loadBugs(){
+                for (let index = 0; index < storage.length; index++) {
+                    const key = storage.key(index);
+                    const value = storage.getItem(key);
+                    const bug = JSON.parse(value);
+                    currentBugId = currentBugId > bug.id ? currentBugId : bug.id;
+                    addBugToList(bug);
+                }
+            }
+
+            function addBugToList(bug){
+                bugs.push(bug)
+                let $newBug = $(`
+                    <li>
+                        <span class="bugname">[Bug - 1]</span>
+                        <div class="datetime">[created at]</div>
+                    </li>
+                `);
+                $newBug.find(".bugname").text(bug.name);
+                if (bug.isClosed){
+                    $newBug.find('.bugname').addClass('closed')
+                }
+                $newBug.find(".datetime").text(bug.createdAt.toString());
+                $('#bugList').append($newBug);
+            }
+
+            function onBtnAddNewClick(){
+                let bugname = $('#txtBugName').val();
+                let isClosed = $('#chkIsClosed')[0].checked;
+                let newBug = {
+                    id : ++currentBugId,
+                    name : bugname,
+                    isClosed : isClosed,
+                    createdAt : new Date()
+                }
+                storage.setItem(newBug.id, JSON.stringify(newBug));
+                addBugToList(newBug)
+            }
+            $(function(){
+                $('#btnAddNew').click(onBtnAddNewClick);
+                loadBugs();
+            })
+        })();
+    </script>
+</head>
+<body>
+    <h1>Bug Tracker</h1>
+    <hr>
+    <section>
+        <label for="">Bug Name :</label>
+        <input type="text" name="" id="txtBugName">
+        <label for="">Closed ? :</label>
+        <input type="checkbox" name="" id="chkIsClosed">
+        <input type="button" value="Add New" id="btnAddNew">
+    </section>
+    <section class="list">
+        <ol id="bugList">
+            
+        </ol>
+        <input type="button" value="Remove Closed">
+    </section>
+</body>
+</html>
