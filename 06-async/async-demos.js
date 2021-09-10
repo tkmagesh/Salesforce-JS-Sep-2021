@@ -15,8 +15,8 @@
 
     window['addSyncClient'] = addSyncClient;
 
-     //async
-    function addAsync(x,y, callback){
+    //async using callbacks
+    function addAsyncCallback(x,y, callback){
         console.log(`   [@service] processing ${x} and ${y}`)
         setTimeout(function(){
             const result = x + y;
@@ -25,13 +25,26 @@
         }, 4000)
     }
 
-    function addAsyncClient(x,y){
+    function addAsyncCallbackClient(x,y){
         console.log(`[@client] invoking the service`)
-        addAsync(x,y, function(result){
+        addAsyncCallback(x,y, function(result){
             console.log(`[@client] result is ${result}`)
         });
     }
 
-    window['addAsyncClient'] = addAsyncClient;
+    window['addAsyncCallbackClient'] = addAsyncCallbackClient;
+
+    //async using promise
+    function addAsyncPromise(x,y){
+        console.log(`   [@service] processing ${x} and ${y}`)
+        var p = new Promise(function(resolveFn, rejectFn){
+            setTimeout(function(){
+                const result = x + y;
+                console.log(`   [@service] returning result`)
+                resolveFn(result);
+            }, 4000);
+        });
+        return p;
+    }
 
 })()
