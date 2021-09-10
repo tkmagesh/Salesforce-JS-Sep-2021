@@ -281,3 +281,43 @@ Browser as a Virtual OS
         Server Sent Events
         Web Sockets
 
+Webpack - Bundler
+
+1. Transpile JS
+2. Minify JS
+3. Ugilify JS
+4. Bundle JS
+5. Version JS files
+6. Minify CSS
+7. Bundle CSS
+8. Version CSS files
+9. Minify html
+10. update the references of the generated js and css in the html file
+
+grunt.js
+gulp.js
+
+ES6 Modules
+    Everything defined in a js file is considered private to that file
+    If any entity (object, varibale, function) need to be public, it has to be explicitly exported
+    If any entity from another is needed, they have to be explicitly imported
+
+
+npx webpack
+npx webpack --stats detailed
+
+to create a production build
+npx webpack --mode production
+
+To use babel (transpiler)
+npm install @babel/core babel-loader @babel/preset-env --save-dev
+
+create .babelrc
+{
+    "presets" : [
+        "@babel/preset-env" 
+    ]
+}
+
+HTML plugin
+npm install html-webpack-plugin html-loader --save-dev
