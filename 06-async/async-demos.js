@@ -47,8 +47,81 @@
         return p;
     }
 
-    window['addAsyncPromise'] = addAsyncPromise;
+   /*  
+   function addAsyncPromiseClient(x,y){
+        console.log(`[@client] invoking the service`)
+        var p = addAsyncPromise(x,y)
+        p.then(function(result){
+            console.log(`[@client] result is ${result}`)
+        });
+    } 
+    */
 
+    //using async await with promises
+    async function addAsyncPromiseClient(x,y){
+        console.log(`[@client] invoking the service`)
+        var result = await addAsyncPromise(x,y);
+        console.log(`[@client] result is ${result}`)
+        return result * 2;
+    }
+
+    window['addAsyncPromiseClient'] = addAsyncPromiseClient;
+
+
+    async function addAsyncPromiseClient2(x,y){
+        console.log(`[@client] invoking the service`)
+        var result1 = await addAsyncPromise(x,y);
+        console.log(`[@client] result1 is ${result1}`)
+        var result2 = await addAsyncPromise(1000,2000)
+        console.log(`[@client] result2 is ${result2}`)
+    }
+
+    window['addAsyncPromiseClient2'] = addAsyncPromiseClient2;
+
+    async function operation1(x,y){
+        console.log(`[@client] invoking the service1`)
+        var result1 = await addAsyncPromise(x,y);
+        console.log(`[@client] result1 is ${result1}`)
+    }
+
+    async function operation2(x,y){
+        console.log(`[@client] invoking the service1`)
+        var result2 = await addAsyncPromise(x,y)
+        console.log(`[@client] result2 is ${result2}`)
+    }
+
+    function addAsyncPromiseClient3(){   
+        operation1(100,200);
+        operation2(1000,2000);
+    }
+
+    window['addAsyncPromiseClient3'] = addAsyncPromiseClient3;
+
+    /* function addAsyncPromiseClient4(){
+        console.log(`[@client] invoking the service1`)
+        var p1 =  addAsyncPromise(100,200);
+        console.log(`[@client] invoking the service2`)
+        var p2 =  addAsyncPromise(1000,2000)
+        
+        Promise.all([p1, p2])
+            .then(function([result1, result2]){
+                console.log(`[@client] result1 is ${result1}`)
+                console.log(`[@client] result2 is ${result2}`)
+            })
+    } */
+    async function addAsyncPromiseClient4(){
+        console.log(`[@client] invoking the service1`)
+        var p1 =  addAsyncPromise(100,200);
+        console.log(`[@client] invoking the service2`)
+        var p2 =  addAsyncPromise(1000,2000)
+        
+        var allResults =  await Promise.all([p1, p2])
+        console.log(`[@client] all results = `, allResults)
+    }
+
+    window['addAsyncPromiseClient4'] = addAsyncPromiseClient4;
+
+   
 })()
 
 /* 
@@ -82,4 +155,17 @@ var p4 = p.then(function(result){
     console.log('done');
     return doubleResult;
 })
+*/
+
+//promise chaining
+/* 
+console.log(`[@client] invoking the service`);
+addAsyncPromise(100,200)
+    .then(function(result){
+        console.log(`[@client] result = ${result}`);
+        return result * 2;
+    })
+    .then(function(doubleResult){
+        console.log(`doubleResult = ${doubleResult}`);
+    })
 */
