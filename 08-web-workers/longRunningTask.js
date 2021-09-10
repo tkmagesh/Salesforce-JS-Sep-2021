@@ -5,7 +5,17 @@ function doWork(){
 
             }
         }
+        if (i % 100 == 0) {
+            postMessage({
+                type : 'progress',
+                percentCompleted : (i/10000)* 100
+            });
+        }
     }
+    postMessage({
+        type : 'done',
+        percentCompleted : 100
+    });
 }
 
 self.addEventListener('message', function(evt){

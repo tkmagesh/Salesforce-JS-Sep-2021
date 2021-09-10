@@ -11,10 +11,14 @@
 
             taskWorker.addEventListener('message', function(evt){
                 console.log('Worker said: ', evt.data);
-                if (evt.data === 'done'){
+                if (evt.data.type === 'done'){
                      displayMessage("Work Completed");
+                } else if (evt.data.type === 'progress') {
+                    document.getElementById('workProgress').value = evt.data.percentCompleted
+                } else {
+                    console.log('unknown message', evt.data);
                 }
-            })
+            });
 
             function displayMessage(msg){
                 document.getElementById('divMessages').innerHTML += msg + '<br/>';
