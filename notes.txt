@@ -182,8 +182,9 @@ Prototypal Inheritance
     
 
 Async Operation
-    
 
 
 
-
+promise libraries
+q.js
+bluebird.js
