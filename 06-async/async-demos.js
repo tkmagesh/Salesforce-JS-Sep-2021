@@ -47,4 +47,39 @@
         return p;
     }
 
+    window['addAsyncPromise'] = addAsyncPromise;
+
 })()
+
+/* 
+
+// followup with another async operation
+var p2 = p.then(function(result){
+    console.log(`[@client] result = ${result}`);
+    return new Promise(function(resolveFn, rejectFn){
+        setTimeout(function(){
+            var doubleResult = result * 2;
+            console.log('done');
+            resolveFn(doubleResult)
+        }, 5000);
+    })
+})
+
+//followup with a sync operation
+var p3 = p.then(function(result){
+    console.log(`[@client] result = ${result}`);
+    return new Promise(function(resolveFn, rejectFn){
+        var doubleResult = result * 2
+        console.log('done');
+        resolveFn(doubleResult)
+    })
+})
+
+//followup with a sync operation (simplified)
+var p4 = p.then(function(result){
+    console.log(`[@client] result = ${result}`);    
+    var doubleResult = result * 2
+    console.log('done');
+    return doubleResult;
+})
+*/
