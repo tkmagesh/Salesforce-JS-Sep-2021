@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Workers Demo</title>
+    <script>
+        (() => {
+            var taskWorker = new Worker('longRunningTask.js');
+
+            taskWorker.addEventListener('message', function(evt){
+                console.log('Worker said: ', evt.data);
+                if (evt.data === 'done'){
+                     displayMessage("Work Completed");
+                }
+            })
+
+            function displayMessage(msg){
+                document.getElementById('divMessages').innerHTML += msg + '<br/>';
+            }
+            function onBtnDoWorkClick(){
+                taskWorker.postMessage('start');
+            }
+            function onDocumentLoad(){
+                var btnDoWork = document.getElementById('btnDoWork');
+                btnDoWork.addEventListener('click', onBtnDoWorkClick);
+            }
+            window.addEventListener('load', onDocumentLoad);
+        })();
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="">
+    <input type="button" value="Do Work" id="btnDoWork">
+    <div id="divMessages"></div>
+</body>
+</html>
